@@ -1,4 +1,4 @@
 FROM openjdk:latest
-COPY ./target/classes /tmp/
+COPY ./target/DevOps_Team8-1.0-jar-with-dependencies.jar /tmp
 WORKDIR /tmp
-ENTRYPOINT ["java", "DevOps_Team8.App"]
+ENTRYPOINT ["java", "-jar", "DevOps_Team8-1.0-jar-with-dependencies.jar"]
