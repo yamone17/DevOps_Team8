@@ -6,7 +6,7 @@
 
     <groupId>Team8</groupId>
     <artifactId>DevOps_Team8</artifactId>
-    <version>1.0</version>
+    <version>2.0</version>
 
     <properties>
         <maven.compiler.source>17</maven.compiler.source>
