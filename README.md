@@ -1,0 +1,1 @@
+![workflow](https://github.com/yamone17/DevOps_Team8/actions/workflows/main.yml/badge.svg)
