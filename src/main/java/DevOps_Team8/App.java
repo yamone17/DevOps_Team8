@@ -1,4 +1,8 @@
-// Java file that connected with mongodb and run from dockerfile
+\** 
+    * Java file that connected with mongodb and run from dockerfile
+    * It connects to a MongoDB server using the MongoClient class, inserts a document into a specified database and collection
+    * Make sure MongoDB server is running in a Docker container named "mongo-dbserver".
+*/
 package DevOps_Team8;
 
 import com.mongodb.MongoClient;
