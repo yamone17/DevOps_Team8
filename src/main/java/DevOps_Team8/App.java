@@ -26,6 +26,12 @@ public class App
         // Sort countries by population
         report.sortByPopulation();
 
+        // Sort countries by population in each continent
+        report.sortByPopulationContinent();
+
+        // Sort countries by population in each region
+        report.sortByPopulationRegion();
+
         // Disconnect from database
         a.disconnect();
     }

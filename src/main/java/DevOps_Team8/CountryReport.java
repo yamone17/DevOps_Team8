@@ -22,6 +22,19 @@ public class CountryReport {
         sortByPopulationAndPrint("Countries sorted by population:", countries);
     }
 
+    /**
+     * Sort countries by population in descending order from each continent and print them
+     */
+    public void sortByPopulationContinent() {
+        Map<String, List<Country>> countriesByContinent = groupCountriesByAttribute(Country::getContinent);
+        sortByPopulationAndPrintByAttribute(countriesByContinent);
+    }
+
+    public void sortByPopulationRegion() {
+        Map<String, List<Country>> countriesByRegion = groupCountriesByAttribute(Country::getRegion);
+        sortByPopulationAndPrintByAttribute(countriesByRegion);
+    }
+
 
     /**
      * Sort the countries list by descending order and display them with a message
@@ -34,6 +47,15 @@ public class CountryReport {
         printCountries(message, countries);
     }
 
+    /**
+     * Sort the countries list by descending order in each attribute and display them
+     * @param countriesByAttribute List of countries that are classified by attribute
+     */
+    private void sortByPopulationAndPrintByAttribute(Map<String, List<Country>> countriesByAttribute) {
+        countriesByAttribute.forEach((attribute, countries) ->
+                sortByPopulationAndPrint(String.format("Countries in %s sorted by population:", attribute), countries)
+        );
+    }
 
 
     /**
@@ -50,5 +72,19 @@ public class CountryReport {
         System.out.println(); // Add blank line for separation
     }
 
-
+    /**
+     * Print list of countries from each attribute
+     * @param attributeExtractor To extract attribute name from countries
+     * @return A map contains list of countries classified by attribute
+     */
+    private Map<String, List<Country>> groupCountriesByAttribute(Function<Country, String> attributeExtractor) {
+        Map<String, List<Country>> countriesByAttribute = new HashMap<>();
+        for (Country country : countries) {
+            String attribute = attributeExtractor.apply(country);
+            countriesByAttribute
+                    .computeIfAbsent(attribute, k -> new ArrayList<>())
+                    .add(country);
+        }
+        return countriesByAttribute;
+    }
 }
