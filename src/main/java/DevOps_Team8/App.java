@@ -1,7 +1,11 @@
 package DevOps_Team8;
 
 import java.sql.*;
+import java.util.List;
 
+/**
+ * Class for connect database, load country data, functions and disconnect from database
+ */
 public class App
 {
     public static void main(String[] args)
@@ -11,6 +15,16 @@ public class App
 
         // Connect to database
         a.connect();
+
+        //Load country data
+        CountryLoader dataLoader = new CountryLoader();
+        List<Country> countries = dataLoader.loadCountryData();
+
+        // Create a Country Report
+        CountryReport report = new CountryReport(countries);
+
+        // Sort countries by population
+        report.sortByPopulation();
 
         // Disconnect from database
         a.disconnect();
@@ -22,7 +36,7 @@ public class App
     private Connection con = null;
 
     /**
-     * Connect to the MySQL database.
+            * Connect to the MySQL database.
      */
     public void connect()
     {
