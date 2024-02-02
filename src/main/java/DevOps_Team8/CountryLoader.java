@@ -21,7 +21,9 @@ public class CountryLoader {
         List<Country> countries = new ArrayList<>();
 
         try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD)) {
-            String sql = "SELECT Code, Name, Population, Continent, Region, Capital FROM country";
+            String sql = "SELECT cty.Code, cty.Name, cty.Population, cty.Continent, " +
+                    "cty.Region, city.Name AS Capital " +
+                    "FROM country cty LEFT JOIN city city ON cty.Capital = city.ID";
             try (Statement statement = connection.createStatement();
                  ResultSet resultSet = statement.executeQuery(sql)) {
                 while (resultSet.next()) {
