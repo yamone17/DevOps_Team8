@@ -22,7 +22,6 @@ MAIN SUCCESS SCENARIO
 •	The user inputs the value of N, specifying the desired number of top populated countries within the continent.
 •	The algorithm generates the countries in the specified continent and it based on their population sizes within the continent.
 ## EXTENSIONS
-Role does not exist:
 None
 ## SUB-VARIATIONS
 None.

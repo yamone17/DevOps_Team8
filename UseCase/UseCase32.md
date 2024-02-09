@@ -19,7 +19,7 @@ The data analytic will be able to make better marketing strategies in Top N Popu
 ### MAIN SUCCESS SCENARIO:
 The system selects the dataset with population statistics for Top N Populated Capital Cities in a Continent by population size
 
-The system print out queries population statistics for cities within the specified country.
+The system displays queries population statistics for cities within the specified country.
 
 The data analyst analyzes the fetches data to find market possibilities and calculate population growth changes 
 
@@ -28,4 +28,4 @@ None
 ### SUB-VARIATIONS
 None
 ### SCHEDULE
-DUE DATE: Ongoing.
+DUE DATE: 23.2.2024

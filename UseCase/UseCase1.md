@@ -35,7 +35,7 @@ A request for population information is sent to organization to improve marketin
 4. Based on the analysis, the system provides insights to the marketing team regarding the countries with the highest populations.
 
 ## EXTENSIONS
-Role does not exist.
+None
 
 ## SUB-VARIATIONS
 None

@@ -21,7 +21,7 @@ MAIN SUCCESS SCENARIO
 •	The system organizes the cities worldwide by their sizes of population, from largest to smallest.
 •	The data analyst utilizes the analysis to plan projects effectively, considering factors such as transportation, housing, and public services.
 ## EXTENSIONS
-Role does not exist:
+
 None
 ## SUB-VARIATIONS
 None.

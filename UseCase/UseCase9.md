@@ -22,9 +22,9 @@ MAIN SUCCESS SCENARIO
 •	The system organizes the cities within the region by population sizes, from largest to smallest.
 •	Based on the analysis, the data analyst makes contributions to future city growth strategies within the region, considering the population density of cities.
 ## EXTENSIONS
-Role does not exist:
+
 None
 ## SUB-VARIATIONS
 None.
 ## SCHEDULE
-DUE DATE: R2/2/2024
+DUE DATE: 2/2/2024

@@ -18,7 +18,7 @@ Data Analyst.
 The data analytic will be able to make better marketing strategies in Obtain Top N Populated Countries in the World based on the data acquired.
 MAIN SUCCESS SCENARIO
 The system selects the dataset with population statistics for Obtain Top N Populated Countries in the World.
-The system print out queries population statistics for cities within the specified country.
+The system displays queries population statistics for cities within the specified country.
 The data analyst analyzes the fetches data to find market possibilities and calculate population growth changes
 ## EXTENSIONS
 None.
@@ -26,4 +26,4 @@ None.
 None.
 ## SCHEDULE
 DUE DATE
-Ongoing
+9/2/2024

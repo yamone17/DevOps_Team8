@@ -34,7 +34,7 @@ A request for population information is sent to organization to improve specifie
 •	Based on the analysis, the data analyst provides insights to business organizations concerning the most effective regions for marketing initiatives within the specified region.
 
 ## EXTENSIONS
-Role does not exist: none
+none
 ## SUB-VARIATIONS
 none
 

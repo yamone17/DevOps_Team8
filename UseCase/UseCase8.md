@@ -21,7 +21,7 @@ MAIN SUCCESS SCENARIO
 •	The system fetches the data of population statistics for cities within the specified continent.
 •	Based on the analysis, the data analyst makes contributions to future city growth strategies within the continent, considering the population density of cities.
 ## EXTENSIONS
-Role does not exist:
+
 None
 ## SUB-VARIATIONS
 None.

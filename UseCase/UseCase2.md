@@ -34,7 +34,8 @@ A request for population information is sent to organization to improve marketin
 •	Based on the analysis, the system provides insights to business companies regarding the most viable locations for marketing focus within the continent.
 
 ## EXTENSIONS
-Role does not exist:	none
+none
+
 ## SUB-VARIATIONS	
 none
 

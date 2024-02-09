@@ -21,7 +21,7 @@ MAIN SUCCESS SCENARIO
 •	The system input the value of N, the desired number of top populated countries within the region.
 •	The algorithm generates a list of the top N populated countries within the region to make better marketing strategy.
 ## EXTENSIONS
-Role does not exist:
+
 None
 ## SUB-VARIATIONS
 None.
