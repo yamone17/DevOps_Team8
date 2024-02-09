@@ -68,6 +68,53 @@ public class CountryReport {
         );
     }
 
+    /**
+     *  To sort countries in world by population in specific number
+     * @param n Number of country
+     * @return first n number of most populated countries
+     */
+    public List<Country> getTopNPopulatedCountriesInWorld(int n) {
+        List<Country> topNCountries = countries.stream()
+                .sorted(Comparator.comparingInt(Country::getPopulation).reversed())
+                .limit(n)
+                .collect(Collectors.toList());
+        printCountries("Top " + n + " populated countries in the world:", topNCountries);
+        return topNCountries;
+    }
+
+    /**
+     * To sort countries in world by population in specific number and continent
+     * @param continent name of continent
+     * @param n Number of country
+     * @return first n number of most populated countries in continent
+     */
+    public List<Country> getTopNPopulatedCountriesInContinent(String continent, int n) {
+        List<Country> topNCountries = countries.stream()
+                .filter(country -> country.getContinent().equalsIgnoreCase(continent))
+                .sorted(Comparator.comparingInt(Country::getPopulation).reversed())
+                .limit(n)
+                .collect(Collectors.toList());
+
+        printCountries("Top " + n + " populated countries in " + continent + ":", topNCountries);
+        return topNCountries;
+    }
+
+    /**
+     * To sort countries in world by population in specific number and region
+     * @param region name of region
+     * @param n Number of country
+     * @return first n number of most populated countries in region
+     */
+    public List<Country> getTopNPopulatedCountriesInRegion(String region, int n) {
+        List<Country> topNCountries = countries.stream()
+                .filter(country -> country.getRegion().equalsIgnoreCase(region))
+                .sorted(Comparator.comparingInt(Country::getPopulation).reversed())
+                .limit(n)
+                .collect(Collectors.toList());
+
+        printCountries("Top " + n + " populated countries in " + region + ":", topNCountries);
+        return topNCountries;
+    }
 
     /**
      * Print list of countries

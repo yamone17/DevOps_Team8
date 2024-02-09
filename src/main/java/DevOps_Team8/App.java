@@ -37,6 +37,15 @@ public class App
         // Sort countries by population in each region
         report.sortByPopulationRegion();
 
+        // Display top 5 countries by population
+        report.getTopNPopulatedCountriesInWorld(5);
+
+        //Display top 5 countries in asia by population
+        report.getTopNPopulatedCountriesInContinent("Asia", 5);
+
+        //Display top 5 countries in southeast asia by population
+        report.getTopNPopulatedCountriesInRegion("Southeast Asia", 5);
+
         // Disconnect from database
         a.disconnect();
     }
