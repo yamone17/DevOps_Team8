@@ -13,7 +13,6 @@ public class App
     {
         // Create new Application
         App a = new App();
-        Scanner scanner = new Scanner(System.in);
         Connection con;
         if(args.length < 1){
             con = a.connect("localhost:33061", 0);
@@ -37,16 +36,6 @@ public class App
 
         // Sort countries by population in each region
         report.sortByPopulationRegion();
-
-        // Sort countries by population in the world where number of country is from user input
-        report.getTopNPopulatedCountriesInWorld(5);
-
-        // Sort countries by population in a continent where number of country and continent name are from user input
-        report.getTopNPopulatedCountriesInContinent("Asia", 5);
-
-        // Sort countries by population in a region where number of country and region name are from user input
-        report.getTopNPopulatedCountriesInRegion("Southeast Asia", 5);
-
 
         // Disconnect from database
         a.disconnect();

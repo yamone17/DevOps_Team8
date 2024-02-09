@@ -84,37 +84,6 @@ public class CountryReport {
     }
 
     /**
-     * Get number of countries to display in output data
-     * @param scanner To get user input data
-     * @return number of countries
-     */
-    private int getNumberOfCountriesFromUserInput(Scanner scanner) {
-        System.out.print("Enter the number of countries: ");
-        while (!scanner.hasNextInt()) {
-            System.out.println("Invalid input. Please enter a valid number.");
-            scanner.next(); // Clear invalid input
-        }
-        return scanner.nextInt();
-    }
-
-    /**
-     * To display data from top n populated countries in the world
-     * @return countries data in descending data
-     */
-    public List<Country> getTopNPopulatedCountriesInWorld() {
-        Scanner scanner = new Scanner(System.in);
-        int n = getNumberOfCountriesFromUserInput(scanner);
-        List<Country> topNCountries = countries.stream()
-                .sorted(Comparator.comparingInt(Country::getPopulation).reversed())
-                .limit(n)
-                .collect(Collectors.toList());
-        printCountries("Top " + n + " populated countries in the world:", topNCountries);
-        return topNCountries;
-    }
-
-
-
-    /**
      * Print list of countries from each attribute
      * @param attributeExtractor To extract attribute name from countries
      * @return A map contains list of countries classified by attribute
