@@ -10,5 +10,4 @@ Develop Build Status
 Release Build Status
 ![GitHub Workflow Status (branch)](https://img.shields.io/github/actions/workflow/status/yamone17/DevOps_Team8/main.yml?branch=release)
 
-Code Coverage
-![codecov](https://codecov.io/gh/yamone17/DevOps_Team8)]
+[![codecov](https://codecov.io/gh/yamone17/DevOps_Team8/branch/master/graph/badge.svg)](https://github.com/yamone17/DevOps_Team8/)
