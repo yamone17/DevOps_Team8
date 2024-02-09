@@ -37,5 +37,22 @@ public class UnitTesting {
         countryReport.sortByPopulation();
     }
 
+    /**
+     * Sort By Population in Descending Continent
+     */
+    @Test
+    void testSortByPopulationContinent() {
+        // Execute the method under test
+        countryReport.sortByPopulationContinent();
+    }
+
+    /**
+     * Sort By Population in Descending Region
+     */
+    @Test
+    void testSortByPopulationRegion() {
+        // Execute the method under test
+        countryReport.sortByPopulationRegion();
+    }
 
 }
