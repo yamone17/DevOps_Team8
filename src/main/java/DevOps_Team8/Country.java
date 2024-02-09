@@ -1,5 +1,7 @@
 package DevOps_Team8;
 
+import java.util.Locale;
+
 /**
  * Define a country with its attributes
  */
@@ -7,6 +9,7 @@ public class Country {
     private String Code;
     private String Name;
     private int Population;
+
     private String Continent;
 
     private String Region;

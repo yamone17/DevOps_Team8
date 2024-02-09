@@ -5,19 +5,18 @@ import java.util.ArrayList;
 import java.util.List;
 
 public class CountryLoader {
-    private static final String JDBC_URL = "jdbc:mysql://db:3306/world?useSSL=false";
+    private static final String JDBC_URL = "jdbc:mysql://db:33061/world?useSSL=false";
     private static final String USERNAME = "root";
     private static final String PASSWORD = "example";
 
-    public List<Country> loadCountryData() {
+    public List<Country> loadCountryData(Connection con) {
         List<Country> countries = new ArrayList<>();
 
-        try (Connection connection = DriverManager.getConnection(JDBC_URL, USERNAME, PASSWORD)) {
-            String sql = "SELECT country.Code, country.Name, country.Population, country.Continent, " +
+        String sql = "SELECT country.Code, country.Name, country.Population, country.Continent, " +
                     "country.Region, city.Name AS Capital " +
                     "FROM country country LEFT JOIN city city ON country.Capital = city.ID";
-            try (Statement statement = connection.createStatement();
-                 ResultSet resultSet = statement.executeQuery(sql)) {
+        try (Statement statement = con.createStatement();
+             ResultSet resultSet = statement.executeQuery(sql)) {
                 while (resultSet.next()) {
                     String code = resultSet.getString("Code");
                     String name = resultSet.getString("Name");
@@ -29,10 +28,10 @@ public class CountryLoader {
                     Country country = new Country(code, name, population, continent, region, capital);
                     countries.add(country);
                 }
-            }
-        } catch (SQLException e) {
-            e.printStackTrace();
+            } catch (SQLException e) {
+            throw new RuntimeException(e);
         }
+
 
         return countries;
     }
