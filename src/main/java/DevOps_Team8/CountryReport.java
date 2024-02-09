@@ -97,22 +97,6 @@ public class CountryReport {
         return scanner.nextInt();
     }
 
-    /**
-     * To display data from top n populated countries in the world
-     * @return countries data in descending data
-     */
-    public List<Country> getTopNPopulatedCountriesInWorld() {
-        Scanner scanner = new Scanner(System.in);
-        int n = getNumberOfCountriesFromUserInput(scanner);
-        List<Country> topNCountries = countries.stream()
-                .sorted(Comparator.comparingInt(Country::getPopulation).reversed())
-                .limit(n)
-                .collect(Collectors.toList());
-        printCountries("Top " + n + " populated countries in the world:", topNCountries);
-        return topNCountries;
-    }
-
-
 
     /**
      * Print list of countries from each attribute

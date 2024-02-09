@@ -32,8 +32,6 @@ public class App
         // Sort countries by population in each region
         report.sortByPopulationRegion();
 
-        // Sort countries by population in the world where number of country is from user input
-        report.getTopNPopulatedCountriesInWorld();
 
         // Disconnect from database
         a.disconnect();
