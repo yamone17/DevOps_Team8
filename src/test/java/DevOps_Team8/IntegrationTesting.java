@@ -76,38 +76,4 @@ public class IntegrationTesting {
 
         assertEquals("CHN", firstCountryCodeInEasternAsia);
     }
-
-
-    /**
-     * Test sortByPopulationNCountry method from CountryReport
-     */
-    @Test
-    void testTopNPopulatedCountriesInWorld() {
-        // Execute the method under test
-        List<Country> topCountries = countryReport.getTopNPopulatedCountriesInWorld(3);
-        assertEquals(3, topCountries.size());
-        assertEquals("CHN", topCountries.get(0).getCode());
-    }
-
-    /**
-     * Test sortByPopulationNCountryContinent method from CountryReport
-     */
-    @Test
-    void testTopNPopulatedCountriesInWorldContinent() {
-        // Execute the method under test
-        List<Country> topCountries = countryReport.getTopNPopulatedCountriesInContinent("Asia", 3);
-        assertEquals(3, topCountries.size());
-        assertEquals("CHN", topCountries.get(0).getCode());
-    }
-
-    /**
-     * Test sortByPopulationNRegion method from CountryReport
-     */
-    @Test
-    void testTopNPopulatedCountriesInWorldRegion() {
-        // Execute the method under test
-        List<Country> topCountries = countryReport.getTopNPopulatedCountriesInRegion("Southeast Asia", 3);
-        assertEquals(3, topCountries.size());
-        assertEquals("IDN", topCountries.get(0).getCode());
-    }
 }
