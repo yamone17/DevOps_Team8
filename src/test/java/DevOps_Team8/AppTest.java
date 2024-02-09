@@ -55,4 +55,32 @@ public class AppTest {
         countryReport.sortByPopulationRegion();
     }
 
+     /**
+      * Sort By Population in Descending by user input
+     */
+    @Test
+    void testTopNPopulatedCountriesInWorld() {
+
+        // Execute the method under test
+        List<Country> topCountries = countryReport.getTopNPopulatedCountriesInWorld(3);
+    }
+
+    /**
+     * Sort By Population in Descending Continent by user input
+     */
+    @Test
+    void testTopNPopulatedCountriesContinent() {
+
+        // Execute the method under test
+        List<Country> topCountries = countryReport.getTopNPopulatedCountriesInContinent("Asia", 1);
+    }
+
+    /**
+     * Sort By Population in Descending Region by user input
+     */
+    @Test
+    void testTopNPopulatedCountriesRegion() {
+        // Execute the method under test
+        List<Country> topCountries = countryReport.getTopNPopulatedCountriesInRegion("Eastern Asia", 1);
+    }
 }
