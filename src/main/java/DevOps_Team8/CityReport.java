@@ -40,6 +40,14 @@ public class CityReport {
         sortByPopulationAndPrintByAttribute(citiesByContinent);
     }
 
+    /**
+     * Sort cities by population in descending order from each region and print them
+     */
+    public void sortByPopulationRegion() {
+        Map<String, List<City>> citiesByRegion = groupCitiesByAttribute(City::getRegion);
+        sortByPopulationAndPrintByAttribute(citiesByRegion);
+    }
+
 
 
     /**
