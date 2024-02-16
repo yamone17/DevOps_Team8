@@ -56,7 +56,13 @@ public class CityReport {
         sortByPopulationAndPrintByAttribute(citiesByDistrict);
     }
 
-
+    /**
+     * Sort cities by population in descending order from each country and print them
+     */
+    public void sortByPopulationCountry() {
+        Map<String, List<City>> citiesByCountry = groupCitiesByAttribute(City::getCountry);
+        sortByPopulationAndPrintByAttribute(citiesByCountry);
+    }
 
     /**
      * Print list of cities
