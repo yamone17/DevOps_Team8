@@ -3,6 +3,7 @@ package DevOps_Team8;
 import java.util.*;
 import java.util.function.Function;
 import java.util.stream.Collectors;
+import java.text.NumberFormat;
 
 /**
  * To generate reports for countries that are sorted by population in the world, in
@@ -11,6 +12,7 @@ import java.util.stream.Collectors;
 public class CountryReport {
     //Declare private variable
     private final List<Country> countries;
+    NumberFormat numberFormat = NumberFormat.getInstance();
 
 
     /**
@@ -33,6 +35,7 @@ public class CountryReport {
 
     /**
      * Sort countries by population in descending order from each continent and print them
+     * @return
      */
     public void sortByPopulationContinent() {
         Map<String, List<Country>> countriesByContinent = groupCountriesByAttribute(Country::getContinent);
@@ -49,7 +52,6 @@ public class CountryReport {
 
     /**
      * Sort the countries list by descending order and display them with a message
-     *
      * @param message The message will be displayed before countries list
      * @param countries List of countries to sort
      */
@@ -124,9 +126,11 @@ public class CountryReport {
     public void printCountries(String message, List<Country> countries) {
         System.out.println(message);
         System.out.printf("%-5s %-50s %-20s %-25s %-20s %-20s%n", "Code", "Name", "Continent", "Region", "Population", "Capital");
-        countries.forEach(country -> System.out.printf("%-5s %-50s %-20s %-25s %-20d %-20s%n",
-                country.getCode(), country.getName(), country.getContinent(),
-                country.getRegion(), country.getPopulation(), country.getCapital()));
+        countries.forEach(country -> {
+            System.out.printf("%-5s %-50s %-20s %-25s %-20s %-20s%n",
+                    country.getCode(), country.getName(), country.getContinent(),
+                    country.getRegion(), numberFormat.format(country.getPopulation()), country.getCapital());
+        });
         System.out.println(); // Add blank line for separation
     }
 
