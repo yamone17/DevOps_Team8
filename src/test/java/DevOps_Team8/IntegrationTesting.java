@@ -12,6 +12,7 @@ import static org.junit.jupiter.api.Assertions.*;
  */
 public class IntegrationTesting {
     static App app;
+    static MySQLSetUp mySQL;
     static CountryLoader dataLoader;
     static List<Country> countries;
     static CountryReport countryReport;
@@ -22,10 +23,10 @@ public class IntegrationTesting {
     @BeforeAll
     static void init()
     {
-        app = new App();
-        Connection con = app.connect("localhost:33061", 30000);
+        mySQL = new MySQLSetUp();
+        mySQL.connect("localhost:33061", 30000);
         dataLoader = new CountryLoader();
-        countries = dataLoader.loadCountryData(con);
+        countries = dataLoader.loadCountryData(mySQL.getConnection());
         countryReport = new CountryReport(countries);
     }
 
