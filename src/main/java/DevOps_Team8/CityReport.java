@@ -43,6 +43,32 @@ public class CityReport {
     }
 
     /**
+     * Sort the cities list by descending order in each attribute and display them
+     * @param citiesByAttribute List of cities that are classified by attribute
+     */
+    private void sortByPopulationAndPrintByAttribute(Map<String, List<City>> citiesByAttribute) {
+        citiesByAttribute.forEach((attribute, cities) ->
+                sortByPopulationAndPrint(String.format("Cities in %s sorted by population:", attribute), cities)
+        );
+    }
+
+    /**
+     * Print list of cities from each attribute
+     * @param attributeExtractor To extract attribute name from cities
+     * @return A map contains list of cities classified by attribute
+     */
+    public Map<String, List<City>> groupCitiesByAttribute(Function<City, String> attributeExtractor) {
+        Map<String, List<City>> citiesByAttribute = new HashMap<>();
+        for (City city : cities) {
+            String attribute = attributeExtractor.apply(city);
+            citiesByAttribute
+                    .computeIfAbsent(attribute, k -> new ArrayList<>())
+                    .add(city);
+        }
+        return citiesByAttribute;
+    }
+
+    /**
      * Print list of cities
      * @param message The message will be displayed before cities list
      * @param cities List of cities to display
