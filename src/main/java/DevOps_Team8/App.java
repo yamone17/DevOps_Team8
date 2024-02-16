@@ -12,20 +12,51 @@ public class App
     public static void main(String[] args)
     {
         // Create new Application
-        App a = new App();
-        Connection con;
+        MySQLSetUp mySQL = new MySQLSetUp();
         if(args.length < 1){
-            con = a.connect("localhost:33061", 0);
+            mySQL.connect("localhost:33060", 30000);
         }else{
-            con = a.connect(args[0], Integer.parseInt(args[1]));
-//            con = a.connect("db:3306", 20000);
+            mySQL.connect(args[0], Integer.parseInt(args[1]));
         }
-        System.out.println(con);
-        //Load country data
-        CountryLoader dataLoader = new CountryLoader();
-        List<Country> countries = dataLoader.loadCountryData(con);
 
-        // Create a Country Report
+
+        //Load country data
+        CountryLoader countryData = new CountryLoader();
+        List<Country> countries = countryData.loadCountryData(mySQL.getConnection());
+        CountryReport countryReport = getCountryReport(countries);
+
+
+        //Load city data
+        CityLoader cityData = new CityLoader();
+        List<City> cities = cityData.loadCityData(mySQL.getConnection());
+        CityReport cityReport = getCityReport(cities);
+
+        // Disconnect from database
+        mySQL.disconnect();
+    }
+
+    private static CityReport getCityReport(List<City> cities) {
+        CityReport report = new CityReport(cities);
+
+        // Sort cities by population
+        report.sortByPopulation();
+
+        //Sort cities by population in each continent
+        report.sortByPopulationContinent();
+
+        //Sort cities by population in each region
+        report.sortByPopulationRegion();
+
+        //Sort cities by population in each country
+        report.sortByPopulationCountry();
+
+        //Sort cities by population in each district
+        report.sortByPopulationDistrict();
+
+        return report;
+    }
+
+    private static CountryReport getCountryReport(List<Country> countries) {
         CountryReport report = new CountryReport(countries);
 
         // Sort countries by population
@@ -46,68 +77,6 @@ public class App
         //Display top 5 countries in southeast asia by population
         report.getTopNPopulatedCountriesInRegion("Southeast Asia", 5);
 
-        // Disconnect from database
-        a.disconnect();
+        return report;
     }
-
-    /**
-     * Connection to MySQL database.
-     */
-    private Connection con = null;
-
-    /**
-     * Connect to the MySQL database.
-     */
-    public Connection connect(String location, int delay) {
-        try {
-            // Load Database driver
-            Class.forName("com.mysql.cj.jdbc.Driver");
-        } catch (ClassNotFoundException e) {
-            System.out.println("Could not load SQL driver");
-            System.exit(-1);
-        }
-
-        int retries = 10;
-        for (int i = 0; i < retries; ++i) {
-            System.out.println("Connecting to database...");
-            try {
-                // Wait a bit for db to start
-                Thread.sleep(delay);
-                // Connect to database
-                con = DriverManager.getConnection("jdbc:mysql://" + location
-                                + "/world?allowPublicKeyRetrieval=true&useSSL=false",
-                        "root", "example");
-                System.out.println("Successfully connected");
-                break;
-            } catch (SQLException sqle) {
-                System.out.println("Failed to connect to database attempt " +                                  Integer.toString(i));
-                System.out.println(sqle.getMessage());
-                return null;
-            } catch (InterruptedException ie) {
-                System.out.println("Thread interrupted? Should not happen.");
-                return null;
-            }
-        }
-        return con;
-    }
-
-    /**
-     * Disconnect from the MySQL database.
-     */
-    public void disconnect()
-    {
-        if (con != null)
-        {
-            try
-            {
-                // Close connection
-                con.close();
-            }
-            catch (Exception e)
-            {
-                System.out.println("Error closing connection to database");
-            }
-        }
-    }
-
 }
