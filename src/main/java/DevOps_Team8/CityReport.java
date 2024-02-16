@@ -33,6 +33,16 @@ public class CityReport {
     }
 
     /**
+     * Sort cities by population in descending order from each continent and print them
+     */
+    public void sortByPopulationContinent() {
+        Map<String, List<City>> citiesByContinent = groupCitiesByAttribute(City::getContinent);
+        sortByPopulationAndPrintByAttribute(citiesByContinent);
+    }
+
+
+
+    /**
      * Print list of cities
      * @param message The message will be displayed before cities list
      * @param cities List of cities to display
