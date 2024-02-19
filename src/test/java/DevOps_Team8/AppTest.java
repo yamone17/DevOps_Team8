@@ -220,8 +220,8 @@ public class AppTest {
         cityReport.sortByPopulationDistrict();
     }
 
-     /**
-      * Sort By Population in Descending by user input
+    /**
+     * Sort By Population in Descending by user input
      */
     @Test
     void testTopNPopulatedCountriesInWorld() {
