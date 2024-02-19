@@ -322,4 +322,24 @@ public class AppTest {
         // Perform test
         populationReport.RegionPopulationReport();
     }
+
+    @Test
+    public void testCountryPopulationReport() throws SQLException {
+        // Mock ResultSet for CountryPopulationReport
+        ResultSet resultSet = mock(ResultSet.class);
+        when(resultSet.next()).thenReturn(true, false);
+        when(resultSet.getString("Name")).thenReturn("Myanmar");
+        when(resultSet.getLong("TotalPopulation")).thenReturn(729776000L);
+        when(resultSet.getLong("PopulationInCities")).thenReturn(6203000L);
+        when(resultSet.getLong("PopulationNotInCities")).thenReturn(723573000L);
+
+        // Mock PreparedStatement and executeQuery
+        PreparedStatement statement = mock(PreparedStatement.class);
+        when(statement.executeQuery()).thenReturn(resultSet);
+
+        when(connection.prepareStatement(anyString())).thenReturn(statement);
+
+        // Perform test
+        populationReport.CountryPopulationReport();
+    }
 }
