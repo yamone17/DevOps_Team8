@@ -260,4 +260,47 @@ public class AppTest {
         mySQL.disconnect();
     }
 
+    @Test
+    void testConnect() throws SQLException {
+        mySQL.connect("localhost:33061", 30); // Assuming MySQL is running locally on port 3306
+        Connection connection = mySQL.getConnection();
+
+
+    }
+
+    @Test
+    void testDisconnect() throws SQLException {
+        mySQL.connect("localhost:33061", 30); // Assuming MySQL is running locally on port 3306
+        Connection connection = mySQL.getConnection();
+
+        mySQL.disconnect();
+
+    }
+
+    @BeforeEach
+    public void setPopulationReport() {
+        connection = mock(Connection.class);
+        populationReport = new PopulationReport(connection);
+    }
+
+    @Test
+    public void testContinentPopulationReport() throws SQLException {
+        // Mock ResultSet for ContinentPopulationReport
+        ResultSet resultSet = mock(ResultSet.class);
+        when(resultSet.next()).thenReturn(true, false);
+        when(resultSet.getString("Name")).thenReturn("Asia");
+        when(resultSet.getLong("TotalPopulation")).thenReturn(900937599400L);
+        when(resultSet.getLong("PopulationInCities")).thenReturn(697604103L);
+        when(resultSet.getLong("PopulationNotInCities")).thenReturn(900239995297L);
+
+        // Mock PreparedStatement and executeQuery
+        PreparedStatement statement = mock(PreparedStatement.class);
+        when(statement.executeQuery()).thenReturn(resultSet);
+
+        when(connection.prepareStatement(anyString())).thenReturn(statement);
+
+        // Perform test
+        populationReport.ContinentPopulationReport();
+    }
+
 }
