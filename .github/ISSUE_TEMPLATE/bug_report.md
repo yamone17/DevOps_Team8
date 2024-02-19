@@ -21,3 +21,4 @@
 #### Additional details / screenshot
 
 - Wile running the coding, the connection with the SQL is disconnected.
+- Firstly, check the coding again and chek the port number of the sql.
