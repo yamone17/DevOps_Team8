@@ -1,8 +1,6 @@
 package DevOps_Team8;
 
-import java.sql.*;
 import java.util.List;
-import java.util.Scanner;
 
 /**
  * Class for connect database, load country data, functions and disconnect from database
@@ -32,14 +30,14 @@ public class App
         CityReport cityReport = getCityReport(cities);
 
         //Load country data
-        // CapitalLoader capitalData = new CapitalLoader();
-        // List<Capital> capitals = capitalData.loadCapitalData(mySQL.getConnection());
-        // CapitalReport capitalReport = getCapitalReport(capitals);
+        CapitalLoader capitalData = new CapitalLoader();
+        List<Capital> capitals = capitalData.loadCapitalData(mySQL.getConnection());
+        CapitalReport capitalReport = getCapitalReport(capitals);
 
-        // PopulationReport populationReport = new PopulationReport(mySQL.getConnection());
-        // populationReport.ContinentPopulationReport();
-        // populationReport.RegionPopulationReport();
-        //populationReport.CountryPopulationReport();
+        PopulationReport populationReport = new PopulationReport(mySQL.getConnection());
+        populationReport.ContinentPopulationReport();
+        populationReport.RegionPopulationReport();
+        populationReport.CountryPopulationReport();
 
         // Disconnect from database
         mySQL.disconnect();
@@ -48,7 +46,17 @@ public class App
     /**
      * All functions for capital report
      */
+    private static CapitalReport getCapitalReport(List<Capital> capitals) {
+        CapitalReport report = new CapitalReport(capitals);
+        report.sortByPopulation();
+        report.sortByPopulationContinent();
+        report.sortByPopulationRegion();
+        report.getTopNPopulatedCapitalsInWorld(10);
+        report.getTopNPopulatedCapitalsInContinent("Asia", 10);
+        report.getTopNPopulatedCapitalsInRegion("Southeast Asia", 10);
 
+        return report;
+    }
 
     /**
      * All functions for country report
