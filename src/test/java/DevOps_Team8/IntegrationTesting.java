@@ -166,4 +166,22 @@ public class IntegrationTesting {
 
         assertEquals("Rangoon (Yangon)", mostPopulatedCityInMyanmar);
     }
+
+    /**
+     * Test city sort by population region
+     */
+    @Test
+    void citySortByPopulationRegion() {
+        List<City> citiesInMyanmar = cities.stream()
+                .filter(city -> city.getCountry().equalsIgnoreCase("Myanmar"))
+                .collect(Collectors.toList());
+
+        // Sort countries in South America by population
+        citiesInMyanmar.sort(Comparator.comparingInt(City::getPopulation).reversed());
+
+        // Get the code of the most populated country in South America
+        String mostPopulatedCityInMyanmar = citiesInMyanmar.get(0).getName();
+
+        assertEquals("Rangoon (Yangon)", mostPopulatedCityInMyanmar);
+    }
 }
