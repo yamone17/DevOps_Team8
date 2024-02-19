@@ -15,7 +15,7 @@ public class CityReport {
 
 
     /**
-     *Construct method for city report class
+     * Construct method for city report class
      */
     public CityReport(List<City> cities) {
         this.cities = cities;
@@ -25,10 +25,9 @@ public class CityReport {
      * Sort countries by population in descending order and print them
      */
     public void sortByPopulation() {
-        if (cities == null){
+        if (cities == null) {
             System.out.print("Null City");
-        }
-        else
+        } else
             sortByPopulationAndPrint("Cities sorted by population:", cities);
     }
 
@@ -66,8 +65,9 @@ public class CityReport {
 
     /**
      * Print list of cities
+     *
      * @param message The message will be displayed before cities list
-     * @param cities List of cities to display
+     * @param cities  List of cities to display
      */
     private void sortByPopulationAndPrint(String message, List<City> cities) {
         cities.sort(Comparator.comparingInt(City::getPopulation).reversed());
@@ -76,6 +76,7 @@ public class CityReport {
 
     /**
      * Sort the cities list by descending order in each attribute and display them
+     *
      * @param citiesByAttribute List of cities that are classified by attribute
      */
     private void sortByPopulationAndPrintByAttribute(Map<String, List<City>> citiesByAttribute) {
@@ -86,6 +87,7 @@ public class CityReport {
 
     /**
      * Print list of cities from each attribute
+     *
      * @param attributeExtractor To extract attribute name from cities
      * @return A map contains list of cities classified by attribute
      */
@@ -102,17 +104,27 @@ public class CityReport {
 
     /**
      * Print list of cities
+     *
      * @param message The message will be displayed before cities list
-     * @param cities List of cities to display
+     * @param cities  List of cities to display
      */
     public void printCities(String message, List<City> cities) {
         System.out.println(message);
         System.out.printf("%-30s %-30s %-30s %-25s%n", "City", "Country", "District", "Population");
         cities.forEach(city -> {
             System.out.printf("%-30s %-30s %-30s %-25s%n",
-                    city.getName(), city.getCountry(),city.getDistrict(),
+                    city.getName(), city.getCountry(), city.getDistrict(),
                     numberFormat.format(city.getPopulation()));
         });
         System.out.println(); // Add blank line for separation
     }
+    public List<City> getTopNPopulatedCitiesInWorld(int n) {
+        List<City> topNCities = cities.stream()
+                .sorted(Comparator.comparingInt(City::getPopulation).reversed())
+                .limit(n)
+                .collect(Collectors.toList());
+        printCities("Top " + n + " populated cities in the world:", topNCities);
+        return topNCities;
+    }
 }
+
