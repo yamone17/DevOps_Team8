@@ -211,6 +211,14 @@ public class AppTest {
     }
 
     @Test
+    void testCityReport() {
+        cityReport.sortByPopulationDistrict();
+        cityReport.sortByPopulationCountry();
+        cityReport.getTopNPopulatedCitiesInDistrict("District of Columbia",1);
+        cityReport.getTopNPopulatedCitiesInCountry("China", 1);
+    }
+
+    @Test
     void testSortByCountry() {
         cityReport.sortByPopulationCountry();
     }
