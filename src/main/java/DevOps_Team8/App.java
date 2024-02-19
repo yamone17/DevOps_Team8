@@ -26,36 +26,54 @@ public class App
         CountryReport countryReport = getCountryReport(countries);
 
 
-        //Load city data
+        //Load country data
         CityLoader cityData = new CityLoader();
         List<City> cities = cityData.loadCityData(mySQL.getConnection());
         CityReport cityReport = getCityReport(cities);
+
+        //Load country data
+        // CapitalLoader capitalData = new CapitalLoader();
+        // List<Capital> capitals = capitalData.loadCapitalData(mySQL.getConnection());
+        // CapitalReport capitalReport = getCapitalReport(capitals);
+
+        // PopulationReport populationReport = new PopulationReport(mySQL.getConnection());
+        // populationReport.ContinentPopulationReport();
+        // populationReport.RegionPopulationReport();
+        //populationReport.CountryPopulationReport();
 
         // Disconnect from database
         mySQL.disconnect();
     }
 
+    /**
+     * All functions for capital report
+     */
+
+
+    /**
+     * All functions for country report
+     */
     private static CityReport getCityReport(List<City> cities) {
         CityReport report = new CityReport(cities);
 
-        // Sort cities by population
         report.sortByPopulation();
-
-        //Sort cities by population in each continent
         report.sortByPopulationContinent();
-
-        //Sort cities by population in each region
         report.sortByPopulationRegion();
-
-        //Sort cities by population in each country
         report.sortByPopulationCountry();
-
-        //Sort cities by population in each district
         report.sortByPopulationDistrict();
+
+        report.getTopNPopulatedCitiesInWorld(10);
+        report.getTopNPopulatedCitiesInContinent("Asia", 10);
+        report.getTopNPopulatedCitiesInRegion("Southeast Asia", 10);
+        report.getTopNPopulatedCitiesInCountry("Myanmar", 5);
+        report.getTopNPopulatedCitiesInDistrict("Maharashtra", 10);
 
         return report;
     }
 
+    /**
+     * All functions for country report
+     */
     private static CountryReport getCountryReport(List<Country> countries) {
         CountryReport report = new CountryReport(countries);
 
