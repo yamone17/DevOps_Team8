@@ -126,5 +126,15 @@ public class CityReport {
         printCities("Top " + n + " populated cities in the world:", topNCities);
         return topNCities;
     }
+    public List<City> getTopNPopulatedCitiesInContinent(String continent, int n) {
+        List<City> topNCities = cities.stream()
+                .filter(city -> city.getContinent().equalsIgnoreCase(continent))
+                .sorted(Comparator.comparingInt(City::getPopulation).reversed())
+                .limit(n)
+                .collect(Collectors.toList());
+
+        printCities("Top " + n + " populated countries in " + continent + ":", topNCities);
+        return topNCities;
+    }
 }
 
