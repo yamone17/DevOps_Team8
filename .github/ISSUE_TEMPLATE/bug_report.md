@@ -18,3 +18,6 @@
 - Connect successfully with SQL.
 
 
+#### Additional details / screenshot
+
+- Wile running the coding, the connection with the SQL is disconnected.
