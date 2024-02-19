@@ -157,5 +157,16 @@ public class CityReport {
         return topNCities;
     }
 
+    public List<City> getTopNPopulatedCitiesInDistrict(String district, int n) {
+        List<City> topNCities = cities.stream()
+                .filter(city -> city.getDistrict().equalsIgnoreCase(district))
+                .sorted(Comparator.comparingInt(City::getPopulation).reversed())
+                .limit(n)
+                .collect(Collectors.toList());
+
+        printCities("Top " + n + " populated countries in " + district + ":", topNCities);
+        return topNCities;
+    }
+
 }
 
