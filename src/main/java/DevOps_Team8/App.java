@@ -1,6 +1,8 @@
 package DevOps_Team8;
 
+import java.sql.*;
 import java.util.List;
+import java.util.Scanner;
 
 /**
  * Class for connect database, load country data, functions and disconnect from database
@@ -34,10 +36,24 @@ public class App
         List<Capital> capitals = capitalData.loadCapitalData(mySQL.getConnection());
         CapitalReport capitalReport = getCapitalReport(capitals);
 
+        // Print Population report
         PopulationReport populationReport = new PopulationReport(mySQL.getConnection());
         populationReport.ContinentPopulationReport();
         populationReport.RegionPopulationReport();
         populationReport.CountryPopulationReport();
+
+        // Print additional population report
+        Additional additional = new Additional(mySQL.getConnection());
+        additional.worldPopulation();
+        additional.continentPopulation();
+        additional.regionPopulation();
+        additional.districtPopulation();
+        additional.countryPopulation();
+        additional.cityPopulation();
+
+        // Print Language report
+        Language language = new Language(mySQL.getConnection());
+        language.language();
 
         // Disconnect from database
         mySQL.disconnect();
